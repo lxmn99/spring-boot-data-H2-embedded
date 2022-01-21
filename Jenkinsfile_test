@@ -1,0 +1,47 @@
+[12:41] Kavya, Pusapati
+
+pipeline{
+agent any
+stages{
+stage('build'){
+steps{
+echo 'building'
+bat "${params.BUILD}"
+}
+}
+stage('test'){
+steps{
+echo "testing "
+bat "${params.TEST}"
+script{
+gv=load("vars/lib.groovy")
+gv.add(12,13)
+calculator.add(12,13)
+calculator.sub(12,13)
+welcome("kavya")
+}
+}
+}
+stage('compile'){
+steps{
+echo "compiling"
+script{
+compile.compile()
+}
+}
+}
+stage('deploy'){
+steps{
+echo "deploying----------"
+script{
+compile.deploy()
+}
+}
+}
+}
+parameters{
+string(name: 'BUILD',defaultValue: 'mvn clean',description:'build command')
+string(name: 'TEST',defaultValue: 'mvn test',description:'test command')
+}
+}
+
