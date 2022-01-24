@@ -91,6 +91,7 @@
     <scope>test</scope>
 </dependency>
 
+		
 	</dependencies>
 
 	<build>
@@ -102,6 +103,11 @@
 					<finalName>spring-h2-demo</finalName>
 				</configuration>
 			</plugin>
+			<plugin>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>0.7.5.201505241946</version>
+</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
